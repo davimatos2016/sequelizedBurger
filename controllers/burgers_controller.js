@@ -36,10 +36,12 @@ var burger = db.burgers;
 
     router.put("/burgers/update/:id", function (req, res) {
         burger.update({
-            devoured: req.body.devoured
+            devoured: req.body.devoured,
+
         }, {
+            fields:['devoured'],
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(function () {
             res.redirect('/burgers');
